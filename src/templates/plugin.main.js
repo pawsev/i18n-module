@@ -227,13 +227,8 @@ export default async (context) => {
   const getBrowserLocale = () => {
     if (process.client && typeof navigator !== 'undefined' && navigator.languages) {
       // Get browser language either from navigator if running on client side, or from the headers
-      console.log('client matchBrowserLocale', matchBrowserLocale(locales, navigator.languages))
-      console.log('client locales', locales)
       return matchBrowserLocale(locales, navigator.languages)
     } else if (req && typeof req.headers['accept-language'] !== 'undefined') {
-      console.log('parseAcceptLanguage', parseAcceptLanguage(req.headers['accept-language']))
-      console.log('locales', locales)
-
       return matchBrowserLocale(locales, parseAcceptLanguage(req.headers['accept-language']))
     } else {
       return undefined
@@ -268,9 +263,6 @@ export default async (context) => {
     }
 
     const finalLocale = fallbackLocale || matchedLocale
-
-    console.log('finalLocale', finalLocale)
-    console.log('fallbackLocale', fallbackLocale)
 
     // Handle cookie option to prevent multiple redirections
     if (finalLocale && (!useCookie || alwaysRedirect || !app.i18n.getLocaleCookie())) {
