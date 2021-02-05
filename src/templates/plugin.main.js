@@ -262,7 +262,7 @@ export default async (context) => {
       matchedLocale = getBrowserLocale()
     }
 
-    const finalLocale = fallbackLocale || matchedLocale
+    const finalLocale = matchedLocale || fallbackLocale
 
     // Handle cookie option to prevent multiple redirections
     if (finalLocale && (!useCookie || alwaysRedirect || !app.i18n.getLocaleCookie())) {

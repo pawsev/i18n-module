@@ -63,7 +63,8 @@ export const matchBrowserLocale = (appLocales, browserLocales) => {
     })
   }
 
-  return matchedLocales.length ? matchedLocales[0].code : undefined
+  // return matchedLocales.length ? matchedLocales[0].code : undefined
+  return undefined
 }
 
 /**
